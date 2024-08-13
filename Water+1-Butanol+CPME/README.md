@@ -1,6 +1,7 @@
 # Vapor-Liquid-Liquid Equilibria for the Water + 1-Butanol + CPME Mixture.
-This repository contains a Jupyter-Notebook with the sgtpy code to model this ternary triphasic mixture via the SAFT-VR-Mie model. The notebook also contains and plots the experimental VLLE measured at the Cohesion Laboratory (Concepción University). Note that you need to install the sgtpy module to use the notebook. We refer the reader to sgtpy documentation for information on how to install it: https://github.com/gustavochm/sgtpy
+This repository contains a Jupyter-Notebook with the sgtpy code to model this ternary triphasic mixture via the SAFT-VR-Mie model. The notebook also contains and plots the experimental VLLE measured at the Cohesion Laboratory (Concepción University). Note that you need to install the sgtpy module to use the notebook. We refer the reader to sgtpy documentation for information on how to install it: https://github.com/gustavochm/sgtpy. 
 
+## Documents compiled in this repository:
   - *SAFT-VR-Mie_model.ipynb*: The Jupyter-Notebook with the triphasic modelling
 
 # Citing this work
