@@ -7,7 +7,10 @@ Each folder contains in its name the $\zeta$ value written after Z and the $\Lam
   - ***Z_01_L_013***: contains files for the $\zeta$=0.1 and $\Lambda$=0.13 coordinate. Another example is:
   - ***Z_0025_L_016***: contains files for the $\zeta$=0.025 and $\Lambda$=0.16 coordinate. Those files are:
     
-      - ***T_1, T_2, T_3, T_4***: Folders containing LAMMPS input/output files for the MD simulations at the four temperatures reported in the publication (T_1 is the lowest and T_4 is the highest temperature). Each file contains
+      - ***box_T_1.png, box_T_2.png, box_T_3.png, box_T_4.png***: Snapshots of the equilibrium VLLE simulation cell at the four simulated temperatures per coordinate, where grey and green spheres are components 1 and 2, respectively.
+      - ***BF_lineplot***: The adimensional interfacial tension *vs.* temperature plot and its extrapolation towards the UCEP.
+      - ***BF_esparcimiento***: The difference between $\gamma_{\alpha\delta} and \gamma_{\alpha\beta} + \gamma_{\beta\delta} to determine the wetting order transition.
+      - ***T_1, T_2, T_3, T_4***: Folders containing LAMMPS input/output files for the MD simulations at the four temperatures reported in the publication (T_1 is the lowest and T_4 is the highest temperature). Each folder contains
         
         - ***in.lammps***: Contains the LAMMPS input file. Simulations should run only from this file.
         - ***log.lammps***: Standard output from LAMMPS containing the thermodynamic output of the system's temporal evolution.
@@ -21,8 +24,8 @@ Within each folder simulations at four different temperatures can be found. Each
       
       
         
-  - ***box_T_1.png, box_T_2.png, box_T_3.png, box_T_4.png***: Snapshots of the equilibrium VLLE simulation cell where grey and green spheres are components 1 and 2 respectively.
-  - ***BF_lineplot***: 
+
+
 
 ### Citing this work
 Please, if you use the input files or the information compiled in this page cite the original work where they come from as:
