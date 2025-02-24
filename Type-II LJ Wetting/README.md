@@ -1,10 +1,14 @@
-# Triphasic_Equilibria
-This repository contains the experimental results, codes or molecular simulation files necessary to represent triphasic phase equilibria and interfaces of systems studied at the Cohesion Laboratory (Concepción University). At the time the systems included in this repository are:
+# Wetting Behavious in type-II Lennard-Jones Mixtures: A Molecular Approach
+This repository contains all the LAMMPS inputs and outputs of VLLE and interfacial simulations carried out in this publication for each $\zeta$ and $\lambda$ coordinates, as well as images of the simulation cell and specific post-processed plots for each coordinate.
 
-## Experimental Systems
-  - *Water + 1-Butanol + CPME*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line
-  - *Water + 1-Butanol + DMC*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line (In construcction)
-  - *Water + 1-Butanol + MB*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line (In construcction)
 
-## Molecular Simulations
-  - *Type-II LJ Wetting*: Containing simultaneous VLL interfacial tensions from molecular simulation of Type II and Type II-A Lennard Jones binary mixtures (In construction)
+### Folder Structure:
+Each folder contains the  r
+  - Z_01_L_013
+  - 
+### Documents compiled in this repository:
+  - *SAFT-VR-Mie_model.ipynb*: The Jupyter-Notebook with the triphasic modelling
+
+### Citing this work
+Please, if you use the notebooks or the experimental VLLE data compiled in this page cite the original work where they were built as:
+- *G. Alonso, M. Cartes, A. Mejía. Vapor-liquid-liquid equilibria for the water + 1-butanol + CPME mixture. Fluid Ph. Equilib. 591 (2025) 114297*
