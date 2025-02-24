@@ -6,4 +6,4 @@ This repository contains a Jupyter-Notebook with the sgtpy code to model this te
 
 ### Citing this work
 Please, if you use the notebooks or the experimental VLLE data compiled in this page cite the original work where they were built as:
-- *G. Alonso, M. Cartes, A. Mejía. Vapor-liquid-liquid equilibria for the water + 1-butanol + CPME mixture. Manuscript under preparation*
+- *G. Alonso, M. Cartes, A. Mejía. Vapor-liquid-liquid equilibria for the water + 1-butanol + CPME mixture. Fluid Ph. Equilib. 591 (2025) 114297*
