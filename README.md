@@ -7,4 +7,4 @@ This repository contains the experimental results, codes or molecular simulation
   - *Water + 1-Butanol + MB*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line (In construcction)
 
 ## Molecular Simulation
-  - *Type-II LJ Wetting*: Containing simultaneous VLL interfacial tensions from molecular simulation of Type II and Type II-A Lennard Jones binary mixtures.
+  - *Type-II LJ Wetting*: Containing simultaneous VLL interfacial tensions from molecular simulation of Type II and Type II-A Lennard Jones binary mixtures (In construction)
