@@ -9,7 +9,7 @@ Each folder contains in its name the $\zeta$ value written after Z and the $\Lam
     
       - ***box_T_1.png, box_T_2.png, box_T_3.png, box_T_4.png***: Snapshots of the equilibrium VLLE simulation cell at the four simulated temperatures per coordinate, where grey and green spheres are components 1 and 2, respectively.
       - ***BF_lineplot***: The adimensional interfacial tension *vs.* temperature plot and its extrapolation towards the UCEP.
-      - ***BF_esparcimiento***: The difference between $\gamma_{\alpha\delta} and \gamma_{\alpha\beta} + \gamma_{\beta\delta} to determine the wetting order transition.
+      - ***BF_esparcimiento***: The difference between $\gamma_{\alpha\delta}$ and $\gamma_{\alpha\beta} + \gamma_{\beta\delta}$ to determine the wetting order transition.
       - ***T_1, T_2, T_3, T_4***: Folders containing LAMMPS input/output files for the MD simulations at the four temperatures reported in the publication (T_1 is the lowest and T_4 is the highest temperature). Each folder contains
         
         - ***in.lammps***: Contains the LAMMPS input file. Simulations should run only from this file.
