@@ -17,16 +17,8 @@ Each folder contains in its name the $\zeta$ value written after Z and the $\Lam
         - ***c1.txt, c2.txt***: Density z-profiles for components 1 and 2 respectively.
         - ***tensores.txt***: Density and pressure z-profiles for the 1 + 2 mixture.
         - ***STD/***: Folder containing a time extension used to calculate the interfacial tension standard deviation. It contains its own in.lammps, log.lammps, c1.txt, c2.txt and tensores.txt files.
-          
-### Documents compiled in this repository:
-Within each folder simulations at four different temperatures can be found. Each temperature inputs and output files are colected in each respective folder. Additionally, the following post-processing files can be found:
-
+            
       
-      
-        
-
-
-
 ### Citing this work
 Please, if you use the input files or the information compiled in this page cite the original work where they come from as:
 - *F.A. Figueroa, G. Alonso, A. Mejía. Wetting Behavior in type-II Lennard-Jones Mixtures: A Molecular Approach. Manuscript under preparation*
