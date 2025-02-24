@@ -6,6 +6,7 @@ This repository contains all the LAMMPS inputs and outputs of VLLE and interfaci
 Each folder contains in its name the $\zeta$ value written after Z and the $\Lambda$ value written after L, with no floating points. Here are some examples of folder coordinates:
   - ***Z_01_L_013***: contains files for the $\zeta$=0.1 and $\Lambda$=0.13 coordinate
   - ***Z_0025_L_016***: contains files for the $\zeta$=0.025 and $\Lambda$=0.16 coordinate
+    
       - ***T_1, T_2, T_3, T_4***: Folders containing LAMMPS input/output files for the MD simulations at the four temperatures reported in the publication (T_1 is the lowest and T_4 is the highest temperature).
         - ***in.lammps***: Contains the LAMMPS input file. Simulations should run only from this file.
         - ***log.lammps***: Standard output from LAMMPS containing the thermodynamic output of the system's temporal evolution.
