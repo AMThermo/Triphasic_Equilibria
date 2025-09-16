@@ -3,7 +3,7 @@ This repository contains the experimental results, codes or molecular simulation
 
 ## Experimental Systems
   - *Water + 1-Butanol + CPME*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line
-  - *Water + 1-Butanol + DMC*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line (In construcction)
+  - *Water + 1-Butanol + DMC*: Containing experimental VLLE data and triphasic IFTs, alongside the SAFT-VR-Mie modeling of the three-phase line and the SGT modeling of the interfaces
   - *Water + 1-Butanol + MB*: Containing experimental VLLE data and SAFT-VR-Mie modeling of its three-phase line (In construcction)
 
 ## Molecular Simulations
