@@ -1,0 +1,100 @@
+#---------------------------------- Simulation Settings -------------------------------------
+#--------------------------------------------------------------------------------------------
+units		real    # r(Å), t(fs), E(Kcal/mol), T(K), P(atm)
+boundary 	p p p	# PBCs in 3 directions
+dimension 	3	# 3D simulation
+atom_style  	full	# Molecular representation
+
+#---------------------------------- Simulation Settings -------------------------------------
+# Here we define the lattice, create the system and load the masses/charges of each atom.
+#--------------------------------------------------------------------------------------------
+
+variable eps11 equal 0.2941 
+
+#INPUT lambda(lam), zeta y la temperatura
+
+variable zeta equal 0.26
+variable lam equal 0.4875
+variable TT equal 164.0562
+
+#internal operation
+variable eps22 equal (${zeta}*${eps11}+${eps11})/(1-${zeta})
+variable eps12 equal (${eps11}+${eps22}-${lam}*${eps11}-${lam}*${eps22})/2
+
+
+lattice custom 1 a1 48 0. 0. a2 0. 48  0. a3 0. 0. 480  basis 0. 0. 0.   
+region ELLV block 0 1 0 1 0 1 units lattice 
+create_box 2 ELLV 
+
+region L1 block 0 1 0 1 0 0.3333 units lattice
+region L2 block 0 1 0 1 0.3333 0.6666 units lattice  
+region V block 0 1 0 1 0.6666 1 units lattice 
+
+create_atoms 1 random 4529 6000 L1
+create_atoms 2 random 11 400 L1
+create_atoms 1 random 4 400 L2
+create_atoms 2 random 6075 7500 L2
+create_atoms 1 random 419 400 V
+create_atoms 2 random 10 60 V
+
+#       i       g/mol
+mass	1	16
+mass    2       16
+
+#crear grupos con tipos de átomos
+group c1 type 1
+group c2 type 2
+
+#---------------------------------------- Force Field ---------------------------------------
+#--------------------------------------------------------------------------------------------
+pair_style	mie/cut		22.5
+#--------------------------------------------------------------------------------------------
+  #Mie Coeff    i j     eps(Kcal/mol)    s (Å)    Lr       La      # mie/cut
+  pair_coeff	1 1     ${eps11}          3.73     12    6
+  pair_coeff	2 2     ${eps22}          3.73     12    6
+  pair_coeff	1 2     ${eps12}          3.73     12    6
+ 
+
+#--------------------------------------------------------------------------------------------
+pair_modify	tail	no
+
+#------------------------------------ Output Settings ---------------------------------------
+# Printing statistics and frequencies
+#--------------------------------------------------------------------------------------------
+
+thermo 		1000					
+	thermo_style 	custom	step cpu temp press density etotal ke pe evdwl etail 
+dump 	1	all 	xyz 	100000 	lammpstrj.xyz   # coordinates file XYZ every 10000 steps
+restart		20000000	rst
+
+#-------------------------------------------- Run -------------------------------------------
+#--------------------------------------------------------------------------------------------
+
+# 		Etol	      Ftol	   Maxiter	Maxeval
+minimize 	1.0e-4 	     1.0e-6 	    1000       10000
+timestep	4	
+
+variable      	TotEng  equal etotal
+fix averages	all     ave/time 20 5000 100000 c_thermo_temp c_thermo_press[0] c_thermo_press[1] c_thermo_press[2] c_thermo_press[3] v_TotEng  file ave.lammps.txt      
+
+# Select NVT simulation
+
+fix   	TP	all	nvt	temp 	${TT} ${TT} 100 
+
+compute lala all chunk/atom bin/1d z lower 1 units box
+
+#calculo de los tensores
+compute T all temp
+compute press all stress/atom T
+fix tensor1 all ave/chunk  20 500000 10000000 lala density/number c_press[1] c_press[2] c_press[3] file tensores.txt
+
+fix tensor2 c1 ave/chunk  20 500000 10000000 lala density/number file c1.txt
+fix tensor3 c2 ave/chunk  20 500000 10000000 lala density/number file c2.txt
+
+fix 1 all recenter NULL NULL INIT
+  run 50000000 upto
+unfix 	TP
+
+#write_data	data.out
+write_restart	rst.out
+
