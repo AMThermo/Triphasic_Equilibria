@@ -1,0 +1,67 @@
+read_restart rst.out
+
+#crear grupos con tipos de átomos
+group c1 type 1
+group c2 type 2
+
+#---------------------------------------- Force Field ---------------------------------------
+# here the information about the interactions and force field parameters are compiled
+#--------------------------------------------------------------------------------------------
+pair_style	mie/cut		22.5
+#--------------------------------------------------------------------------------------------
+  #Mie Coeff    i j     eps(Kcal/mol)    s (Å)    Lr       La      # mie/cut
+  pair_coeff	1 1     0.2941           3.73     12    6
+  pair_coeff	2 2     0.3418           3.73     12    6
+  pair_coeff	1 2     0.2766          3.73     12    6
+ 
+
+#--------------------------------------------------------------------------------------------
+pair_modify	tail	no
+
+#------------------------------------ Output Settings ---------------------------------------
+# Printing statistics and frequencies
+#--------------------------------------------------------------------------------------------
+
+# print the thermodynamic output every 1000 time steps and print the following info 
+thermo 		1000					
+	thermo_style 	custom	step cpu temp press density etotal ke pe evdwl etail 
+
+dump 	1	all 	xyz 	100000 	lammpstrj.xyz   # coordinates file XYZ every 1000 steps
+
+restart		20000000	rst				# print lammps_restart evert 100000 steps
+
+#-------------------------------------------- Run -------------------------------------------
+# Chain of Simulations to get data. (1) minimization, (2) NVT run, (3) NVE run, (4) ...
+#--------------------------------------------------------------------------------------------
+
+
+# (2) default simulation at 4 fs timestep 
+timestep	4	
+
+variable      	TotEng  equal etotal
+fix averages	all     ave/time 20 5000 100000 c_thermo_temp c_thermo_press[0] c_thermo_press[1] c_thermo_press[2] c_thermo_press[3] v_TotEng  file ave.lammps.txt      
+
+# Select either NVT simulation
+
+fix   	TP	all	nvt	temp 	93.6986 93.6986  100 
+
+
+compute lala all chunk/atom bin/1d z lower 1 units box
+
+#calculo de los tensores
+compute T all temp
+compute press all stress/atom T
+fix tensor1 all ave/chunk 20 125000 2500000 lala density/number c_press[1] c_press[2] c_press[3] file tensores.txt
+
+fix tensor2 c1 ave/chunk 20 125000 2500000 lala density/number file c1.txt
+fix tensor3 c2 ave/chunk 20 125000 2500000 lala density/number file c2.txt
+
+fix 1 all recenter NULL NULL INIT
+
+  run 25000000
+unfix 	TP
+
+
+#write_data	data.out
+write_restart	rst.out
+
